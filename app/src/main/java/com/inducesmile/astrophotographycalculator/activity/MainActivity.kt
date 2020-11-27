@@ -28,8 +28,10 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
+        //return if (id == R.id.action_settings) {
+          //  true
+        // } else {
+           return super.onOptionsItemSelected(item)
+        // }
     }
 }
