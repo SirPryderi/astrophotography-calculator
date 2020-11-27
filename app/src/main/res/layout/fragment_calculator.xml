@@ -14,19 +14,21 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Camera">
+        android:labelFor="@id/textview_camera"
+        android:hint="@string/camera">
 
         <AutoCompleteTextView
             android:id="@+id/textview_camera"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/default_camera"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Aperture"
+        android:hint="@string/aperture"
         app:prefixText="f/">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -34,14 +36,14 @@
             android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1.8"
+            android:text="@string/default_aperture"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Focal Length"
+        android:hint="@string/focal_length"
         app:suffixText="mm">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -49,7 +51,7 @@
             android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="50"
+            android:text="@string/default_focal_length"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,7 +59,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Max Exposure Time"
+        android:hint="@string/max_exposure_time"
         app:suffixText="s">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -65,7 +67,7 @@
             android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:text="@string/default_exposure_time"
             android:enabled="false"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -85,6 +87,7 @@
         android:id="@+id/slider_iso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:value="@string/default_iso"
         />
     </LinearLayout>
 
