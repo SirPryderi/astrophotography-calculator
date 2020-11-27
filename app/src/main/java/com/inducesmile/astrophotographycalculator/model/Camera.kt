@@ -16,11 +16,11 @@ class Camera(val brand: String,
              val pixelHeight: Int,
 ) {
     fun megaPixels(): Double {
-        return pixelHeight * pixelWidth / 1000.0
+        return pixelHeight * pixelWidth / 1_000.0
     }
 
     fun pixelPitch(): Double {
-        return sensorWidth / pixelWidth * 1000.0
+        return sensorWidth / pixelWidth * 1_000.0
     }
 
     fun circleOfConfusion(): Double {
@@ -28,7 +28,7 @@ class Camera(val brand: String,
     }
 
     fun diffraction(): Double {
-        return circleOfConfusion() * 1000 / (2.43932 * 0.00000055 * 1000000)
+        return circleOfConfusion() * 1_000 / (2.43932 * 0.00000055 * 1000_000)
     }
 
     fun exposureValue(aperture: Double, speed: Double, iso: Int): Double {
