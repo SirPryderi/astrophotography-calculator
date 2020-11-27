@@ -1,4 +1,4 @@
-package com.inducesmile.astrophotographycalculator.view.fragment
+package io.sirpryderi.github.astrophotographycalculator.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import com.inducesmile.astrophotographycalculator.R
+import io.sirpryderi.github.astrophotographycalculator.R
 
 class SecondFragment : Fragment() {
     override fun onCreateView(

@@ -1,4 +1,4 @@
-package com.inducesmile.astrophotographycalculator.model
+package io.sirpryderi.github.astrophotographycalculator.model
 
 import android.content.Context
 import java.io.BufferedReader

@@ -6,7 +6,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.inducesmile.astrophotographycalculator"
+        applicationId "io.sirpryderi.github.astrophotographycalculator"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1

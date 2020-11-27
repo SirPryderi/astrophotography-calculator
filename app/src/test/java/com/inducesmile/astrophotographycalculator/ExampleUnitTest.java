@@ -1,4 +1,4 @@
-package com.inducesmile.astrophotographycalculator;
+package io.sirpryderi.github.astrophotographycalculator;
 
 import org.junit.Test;
 
