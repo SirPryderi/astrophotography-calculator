@@ -1,4 +1,4 @@
-package io.sirpryderi.github.astrophotographycalculator.activity
+package io.github.sirpryderi.astrophotographycalculator.activity
 
 import android.os.Bundle
 import android.view.Menu
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import io.sirpryderi.github.astrophotographycalculator.R
+import io.github.sirpryderi.astrophotographycalculator.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

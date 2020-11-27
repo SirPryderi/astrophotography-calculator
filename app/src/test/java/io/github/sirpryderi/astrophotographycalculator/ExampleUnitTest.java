@@ -1,4 +1,4 @@
-package io.sirpryderi.github.astrophotographycalculator;
+package io.github.sirpryderi.astrophotographycalculator;
 
 import org.junit.Test;
 

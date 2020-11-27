@@ -1,4 +1,4 @@
-package io.sirpryderi.github.astrophotographycalculator.model
+package io.github.sirpryderi.astrophotographycalculator.model
 
 import kotlin.math.cos
 import kotlin.math.log2

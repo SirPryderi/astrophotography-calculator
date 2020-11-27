@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:labelFor="@id/slider_iso"
         android:text="@string/iso" />
-    <io.sirpryderi.github.astrophotographycalculator.view.component.IsoSlider
+    <io.github.sirpryderi.astrophotographycalculator.view.component.IsoSlider
         android:id="@+id/slider_iso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

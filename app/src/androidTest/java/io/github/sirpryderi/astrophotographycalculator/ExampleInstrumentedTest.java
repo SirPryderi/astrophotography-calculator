@@ -1,4 +1,4 @@
-package io.sirpryderi.github.astrophotographycalculator;
+package io.github.sirpryderi.astrophotographycalculator;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("io.sirpryderi.github.astrophotographycalculator", appContext.getPackageName());
+        assertEquals("io.github.sirpryderi.astrophotographycalculator", appContext.getPackageName());
     }
 }

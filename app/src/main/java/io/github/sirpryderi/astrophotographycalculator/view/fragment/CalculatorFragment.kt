@@ -1,4 +1,4 @@
-package io.sirpryderi.github.astrophotographycalculator.view.fragment
+package io.github.sirpryderi.astrophotographycalculator.view.fragment
 
 import android.animation.ArgbEvaluator
 import android.os.Bundle
@@ -13,9 +13,9 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.material.progressindicator.LinearProgressIndicator
-import io.sirpryderi.github.astrophotographycalculator.R
-import io.sirpryderi.github.astrophotographycalculator.model.*
-import io.sirpryderi.github.astrophotographycalculator.view.component.IsoSlider
+import io.github.sirpryderi.astrophotographycalculator.R
+import io.github.sirpryderi.astrophotographycalculator.model.*
+import io.github.sirpryderi.astrophotographycalculator.view.component.IsoSlider
 import kotlin.math.abs
 import kotlin.math.roundToInt
 

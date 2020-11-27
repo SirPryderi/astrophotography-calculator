@@ -1,9 +1,9 @@
-package io.sirpryderi.github.astrophotographycalculator.view.component
+package io.github.sirpryderi.astrophotographycalculator.view.component
 
 import android.content.Context
 import android.util.AttributeSet
 import com.google.android.material.slider.Slider
-import io.sirpryderi.github.astrophotographycalculator.model.Iso
+import io.github.sirpryderi.astrophotographycalculator.model.Iso
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
