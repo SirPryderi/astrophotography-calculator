@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.model.*
@@ -30,6 +31,8 @@ class CalculatorFragment : Fragment() {
     private var exposureValue: TextView? = null
     private var isoText: TextView? = null
     private var exposureValueProgress: LinearProgressIndicator? = null
+
+    private var exposureTimeWarning: View? = null
 
     private var cameras: ArrayList<Camera> = ArrayList()
 
@@ -56,6 +59,8 @@ class CalculatorFragment : Fragment() {
         exposureValueProgress = view.findViewById(R.id.progress_exposure_value)
         isoSlider = view.findViewById(R.id.slider_iso)
         isoText = view.findViewById(R.id.textview_iso)
+
+        exposureTimeWarning = view.findViewById(R.id.message_exposure_time_warning)
 
         cameraText?.setAdapter(adapter)
 
@@ -103,6 +108,12 @@ class CalculatorFragment : Fragment() {
 
         val ev = camera.exposureValue(aperture, speed, iso)
         val evPercentage = evToPercentage(ev)
+
+        if (speed > camera.maxExposureTime400Rule(focalLength)) {
+            exposureTimeWarning?.visibility = View.VISIBLE
+        } else {
+            exposureTimeWarning?.visibility = View.INVISIBLE
+        }
 
         exposureValueProgress?.setIndicatorColor(progressBarColor(evPercentage))
 
