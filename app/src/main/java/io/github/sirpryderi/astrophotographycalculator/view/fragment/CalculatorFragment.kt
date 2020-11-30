@@ -47,9 +47,9 @@ class CalculatorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        cameras = loadCameras(context!!)
+        cameras = loadCameras(requireContext())
 
-        val adapter = ArrayAdapter(context!!, R.layout.camera_menu_item, cameras.toCameraNames())
+        val adapter = ArrayAdapter(requireContext(), R.layout.camera_menu_item, cameras.toCameraNames())
 
         cameraText = view.findViewById(R.id.textview_camera)
         apertureText = view.findViewById(R.id.textview_aperture)
@@ -159,7 +159,7 @@ class CalculatorFragment : Fragment() {
     }
 
     private fun progressBarColor(evPercentage: Float): Int {
-        val primaryColor = this.context!!.resources.getColor(R.color.colorPrimary)
+        val primaryColor = this.requireContext().resources.getColor(R.color.colorPrimary)
         var finalColor = primaryColor
 
         when {
