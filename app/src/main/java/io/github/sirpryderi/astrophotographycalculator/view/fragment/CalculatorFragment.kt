@@ -1,6 +1,7 @@
 package io.github.sirpryderi.astrophotographycalculator.view.fragment
 
 import android.animation.ArgbEvaluator
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -64,10 +65,6 @@ class CalculatorFragment : Fragment() {
 
         cameraText?.setAdapter(adapter)
 
-        if (cameraText?.text.isNullOrBlank()) {
-            cameraText?.setText(cameras[0].toString())
-        }
-
         val watcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 //                TODO("Not yet implemented")
@@ -82,6 +79,9 @@ class CalculatorFragment : Fragment() {
             }
         }
 
+        // populates the field with the last used values (or default ones)
+        getPreviousValues()
+
         cameraText?.addTextChangedListener(watcher)
         apertureText?.addTextChangedListener(watcher)
         focalLengthText?.addTextChangedListener(watcher)
@@ -93,6 +93,31 @@ class CalculatorFragment : Fragment() {
 //            NavHostFragment.findNavController(this@CalculatorFragment)
 //                    .navigate(R.id.action_FirstFragment_to_SecondFragment)
 //        }
+    }
+
+    override fun onDestroyView() {
+        // stores the current values in the form
+        setPreviousValues()
+        super.onDestroyView()
+    }
+
+    private fun getPreviousValues() {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+
+        cameraText?.setText(sharedPref.getString("previous_camera", getString(R.string.default_camera)))
+        apertureText?.setText(sharedPref.getString("previous_aperture", getString(R.string.default_aperture)))
+        focalLengthText?.setText(sharedPref.getString("previous_focal_length", getString(R.string.default_focal_length)))
+    }
+
+    private fun setPreviousValues() {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+
+        with (sharedPref.edit()) {
+            putString("previous_camera", cameraText?.text.toString())
+            putString("previous_aperture", apertureText?.text.toString())
+            putString("previous_focal_length", focalLengthText?.text.toString())
+            apply()
+        }
     }
 
     private fun calculateEv() {
