@@ -104,7 +104,7 @@ class CalculatorFragment : Fragment() {
     private fun getPreviousValues() {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
-        cameraText?.setText(sharedPref.getString("previous_camera", getString(R.string.default_camera)))
+        cameraText?.setText(sharedPref.getString("previous_camera", getString(R.string.default_camera)), false)
         apertureText?.setText(sharedPref.getString("previous_aperture", getString(R.string.default_aperture)))
         focalLengthText?.setText(sharedPref.getString("previous_focal_length", getString(R.string.default_focal_length)))
     }
