@@ -16,4 +16,16 @@
         android:name="io.github.sirpryderi.astrophotographycalculator.view.fragment.EVCalculatorFragment"
         android:label="@string/title_ev_calculator"
         tools:layout="@layout/fragment_ev_calculator" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="io.github.sirpryderi.astrophotographycalculator.view.fragment.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/navigation_help"
+        android:name="io.github.sirpryderi.astrophotographycalculator.view.fragment.HelpFragment"
+        android:label="@string/title_help"
+        tools:layout="@layout/fragment_help" />
 </navigation>
