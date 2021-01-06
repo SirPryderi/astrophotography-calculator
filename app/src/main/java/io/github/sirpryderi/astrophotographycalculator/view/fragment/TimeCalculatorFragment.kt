@@ -142,7 +142,7 @@ class TimeCalculatorFragment : Fragment() {
         exposureValueProgress?.setIndicatorColor(progressBarColor(evPercentage))
 
         isoText?.text = getString(R.string.iso, Iso(iso).value)
-        exposureValue?.text = getString(R.string.exposure_value, ev)
+        exposureValue?.text = getString(R.string.exposure_value_f, ev)
         exposureValueProgress?.progress = (evPercentage * 100).roundToInt()
         exposureTimeText?.setText("%.2f".format(camera.maxExposureTime(aperture, focalLength)))
     }

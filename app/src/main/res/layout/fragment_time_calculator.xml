@@ -112,7 +112,7 @@
         android:id="@+id/textview_exposure_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/exposure_value" />
+        android:text="@string/exposure_value_f" />
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress_exposure_value"
         android:progress="50"

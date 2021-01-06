@@ -1,22 +1,17 @@
 <resources>
     <string name="app_name">Astrophotography Calculator</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="exposure_value">Exposure Value: %.2f EV</string>
+    <string name="exposure_value_f">Exposure Value: %.2f EV</string>
+    <string name="exposure_value">Exposure Value</string>
     <string name="iso">ISO: %d</string>
     <string name="camera">Camera</string>
     <string name="aperture">Aperture</string>
     <string name="focal_length">Focal Length</string>
-    <string name="max_exposure_time">Max Exposure Time</string>
+    <string name="max_exposure_time">Max Shutter Speed</string>
+    <string name="exposure_time">Shutter Speed</string>
 
     <string name="title_time_calculator">Time Calculator</string>
-    <string name="title_ev_calculator">EV Calculator</string>
+    <string name="title_ev_calculator">Exposure Value Calculator</string>
     <string name="title_help">Help</string>
     <string name="title_settings">Settings</string>
 
