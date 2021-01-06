@@ -9,6 +9,7 @@
     <string name="focal_length">Focal Length</string>
     <string name="max_exposure_time">Max Shutter Speed</string>
     <string name="exposure_time">Shutter Speed</string>
+    <string name="declination">Minimum Star Declination</string>
 
     <string name="title_time_calculator">Time Calculator</string>
     <string name="title_ev_calculator">Exposure Value Calculator</string>

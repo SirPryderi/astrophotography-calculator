@@ -58,6 +58,21 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        app:startIconDrawable="@drawable/ic_declination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/declination"
+        app:suffixText="°">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textview_declination"
+            android:inputType="numberSigned|numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/default_declination"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         app:startIconDrawable="@drawable/ic_shutter_speed_24"

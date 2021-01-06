@@ -26,6 +26,7 @@ class TimeCalculatorFragment : Fragment() {
     private var apertureText: EditText? = null
     private var focalLengthText: EditText? = null
     private var exposureTimeText: EditText? = null
+    private var declinationText: EditText? = null
 
     private var isoSlider: IsoSlider? = null
     private var exposureValue: TextView? = null
@@ -54,6 +55,7 @@ class TimeCalculatorFragment : Fragment() {
         apertureText = view.findViewById(R.id.textview_aperture)
         focalLengthText = view.findViewById(R.id.textview_focal_length)
         exposureTimeText = view.findViewById(R.id.textview_exposure_time)
+        declinationText = view.findViewById(R.id.textview_declination)
 
         exposureValue = view.findViewById(R.id.textview_exposure_value)
         exposureValueProgress = view.findViewById(R.id.progress_exposure_value)
@@ -84,6 +86,7 @@ class TimeCalculatorFragment : Fragment() {
         cameraText?.addTextChangedListener(watcher)
         apertureText?.addTextChangedListener(watcher)
         focalLengthText?.addTextChangedListener(watcher)
+        declinationText?.addTextChangedListener(watcher)
         isoSlider?.addOnChangeListener { _, _, _ ->  calculateEv()}
 
         calculateEv()
@@ -106,6 +109,7 @@ class TimeCalculatorFragment : Fragment() {
         cameraText?.setText(sharedPref.getString("previous_camera", getString(R.string.default_camera)), false)
         apertureText?.setText(sharedPref.getString("previous_aperture", getString(R.string.default_aperture)))
         focalLengthText?.setText(sharedPref.getString("previous_focal_length", getString(R.string.default_focal_length)))
+        declinationText?.setText(sharedPref.getString("previous_declination", getString(R.string.default_declination)))
     }
 
     private fun setPreviousValues() {
@@ -115,6 +119,7 @@ class TimeCalculatorFragment : Fragment() {
             putString("previous_camera", cameraText?.text.toString())
             putString("previous_aperture", apertureText?.text.toString())
             putString("previous_focal_length", focalLengthText?.text.toString())
+            putString("previous_declination", declinationText?.text.toString())
             apply()
         }
     }
@@ -124,6 +129,8 @@ class TimeCalculatorFragment : Fragment() {
 
         val aperture = apertureText?.text?.toString()?.toDoubleOrNull()
         val focalLength = focalLengthText?.text?.toString()?.toDoubleOrNull()
+        val declinationInDeg = declinationText?.text?.toString()?.toDoubleOrNull() ?: 0.0
+        val declinationInRad = (declinationInDeg / 180 * Math.PI).coerceIn(-Math.PI / 2.0, Math.PI / 2.0)
         val iso = isoSlider?.value?.toInt()
 
         if (aperture == null || iso == null || focalLength == null || camera == null) return
@@ -144,7 +151,7 @@ class TimeCalculatorFragment : Fragment() {
         isoText?.text = getString(R.string.iso, Iso(iso).value)
         exposureValue?.text = getString(R.string.exposure_value_f, ev)
         exposureValueProgress?.progress = (evPercentage * 100).roundToInt()
-        exposureTimeText?.setText("%.2f".format(camera.maxExposureTime(aperture, focalLength)))
+        exposureTimeText?.setText("%.2f".format(camera.maxExposureTime(aperture, focalLength, declination = declinationInRad)))
     }
 
     private fun evToPercentage(ev: Double): Float {
