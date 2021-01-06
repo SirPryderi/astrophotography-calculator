@@ -32,10 +32,6 @@ class Camera(val brand: String,
         return circleOfConfusion() * 1_000 / (2.43932 * 0.00000055 * 1000_000)
     }
 
-    fun exposureValue(aperture: Double, speed: Double, iso: Int): Double {
-        return log2(aperture.pow(2.0)/speed/(iso/100.0))
-    }
-
     fun cropFactor(): Float {
         val diagonal35mm = sqrt(36.0.pow(2) + 24.0.pow(2))
         val diagonalThis = sqrt(sensorHeight.pow(2) + sensorWidth.pow(2))

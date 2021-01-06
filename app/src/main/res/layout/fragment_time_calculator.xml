@@ -91,50 +91,7 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@android:color/transparent"
-                android:src="@drawable/ic_iso"
-                app:tint="@color/material_on_surface_emphasis_medium" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textview_iso"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="14dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="-10dp"
-                    android:labelFor="@id/slider_iso"
-                    android:text="@string/iso" />
-
-                <io.github.sirpryderi.astrophotographycalculator.view.component.IsoSlider
-                    android:id="@+id/slider_iso"
-                    android:layout_marginStart="-14dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:value="@string/default_iso" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+    <include layout="@layout/fragment_iso"/>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"

@@ -1,15 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:divider="@drawable/divider"
+    android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin"
+    android:showDividers="middle"
     tools:context=".view.fragment.EVCalculatorFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:hint="@string/aperture"
+        app:prefixText="f/"
+        app:startIconDrawable="@drawable/ic_aperture_24">
 
-</FrameLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textview_aperture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="@string/default_aperture" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/exposure_time"
+        app:startIconDrawable="@drawable/ic_shutter_speed_24"
+        app:suffixText="s">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textview_exposure_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="@string/default_exposure_time" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <include layout="@layout/fragment_iso" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textview_exposure_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginVertical="14dp"
+            android:text="@string/exposure_value_f" />
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>
