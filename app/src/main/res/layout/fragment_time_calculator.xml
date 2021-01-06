@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:showDividers="middle"
     android:divider="@drawable/divider"
-    tools:context=".view.fragment.CalculatorFragment">
+    tools:context=".view.fragment.TimeCalculatorFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"

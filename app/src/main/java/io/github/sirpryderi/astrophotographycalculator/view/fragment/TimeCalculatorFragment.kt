@@ -13,7 +13,6 @@ import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.model.*
@@ -22,7 +21,7 @@ import kotlin.math.abs
 import kotlin.math.roundToInt
 
 
-class CalculatorFragment : Fragment() {
+class TimeCalculatorFragment : Fragment() {
     private var cameraText: AutoCompleteTextView? = null
     private var apertureText: EditText? = null
     private var focalLengthText: EditText? = null
@@ -42,7 +41,7 @@ class CalculatorFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calculator, container, false)
+        return inflater.inflate(R.layout.fragment_time_calculator, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

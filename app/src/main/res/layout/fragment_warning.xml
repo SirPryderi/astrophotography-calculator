@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:visibility="invisible"
     tools:visibility="visible"
-    tools:showIn="@layout/fragment_calculator">
+    tools:showIn="@layout/fragment_time_calculator">
 
     <LinearLayout
         android:layout_marginHorizontal="14dp"

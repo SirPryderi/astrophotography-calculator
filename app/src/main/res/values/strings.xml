@@ -14,5 +14,12 @@
     <string name="aperture">Aperture</string>
     <string name="focal_length">Focal Length</string>
     <string name="max_exposure_time">Max Exposure Time</string>
-    <string name="default_aperture">1.8</string>
+
+    <string name="title_time_calculator">Time Calculator</string>
+    <string name="title_ev_calculator">EV Calculator</string>
+    <string name="title_help">Help</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

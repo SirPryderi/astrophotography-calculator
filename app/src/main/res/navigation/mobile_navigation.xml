@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_time_calculator">
+
+    <fragment
+        android:id="@+id/navigation_time_calculator"
+        android:name="io.github.sirpryderi.astrophotographycalculator.view.fragment.TimeCalculatorFragment"
+        android:label="@string/title_time_calculator"
+        tools:layout="@layout/fragment_time_calculator" />
+
+    <fragment
+        android:id="@+id/navigation_ev_calculator"
+        android:name="io.github.sirpryderi.astrophotographycalculator.view.fragment.EVCalculatorFragment"
+        android:label="@string/title_ev_calculator"
+        tools:layout="@layout/fragment_ev_calculator" />
+</navigation>
