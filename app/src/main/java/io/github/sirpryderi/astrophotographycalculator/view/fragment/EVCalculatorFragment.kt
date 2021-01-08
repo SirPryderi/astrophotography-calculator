@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.model.Iso
 import io.github.sirpryderi.astrophotographycalculator.model.exposureValue
+import io.github.sirpryderi.astrophotographycalculator.model.loadScenesFromXml
+import kotlin.math.roundToInt
 
 
 class EVCalculatorFragment : AbstractCalculator() {
@@ -35,7 +37,19 @@ class EVCalculatorFragment : AbstractCalculator() {
 
         val ev = exposureValue(aperture, speed, iso)
 
+        val scenes = loadScenesFromXml(resources.getXml(R.xml.ev_scenes))
+
+        val roundedEv = ev.roundToInt()
+        val texts = mutableListOf<String>()
+        texts.add(getString(R.string.exposure_value_f, ev))
+        texts.add("\n${getString(R.string.good_for)}:")
+
+        val compatibleScenes = scenes.filter { scene -> scene.minEv <= roundedEv && scene.maxEv >= roundedEv }
+        for (scene in compatibleScenes) {
+            texts.add(" • ${scene.groups.joinToString(", ")}, ${scene.name}")
+        }
+
         isoText?.text = getString(R.string.iso, Iso(iso).value)
-        exposureValue?.text = getString(R.string.exposure_value_f, ev)
+        exposureValue?.text = texts.joinToString("\n")
     }
 }

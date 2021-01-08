@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenes>
+    <group name="daylight">
+        <scene ev="16">light sand or snow in full or slightly hazy sunlight (distinct shadows)</scene>
+        <scene ev="15">typical scene in full or slightly hazy sunlight (distinct shadows)</scene>
+        <scene ev="14">typical scene in hazy sunlight (soft shadows)</scene>
+        <scene ev="13">typical scene, cloudy bright (no shadows)</scene>
+        <scene ev="12">typical scene, heavy overcast</scene>
+        <scene ev="12">areas in open shade, clear sunlight</scene>
+    </group>
+    <group name="outdoor">
+        <group name="astrophotography">
+            <group name="the Moon, altitude > 40°">
+                <scene ev="15">full</scene>
+                <scene ev="14">gibbous</scene>
+                <scene ev="13">quarter</scene>
+                <scene ev="12">crescent</scene>
+                <scene ev="0,3">blood</scene>
+            </group>
+            <scene ev="-11,-9">Milky Way galactic center</scene>
+            <scene ev="-4">meteors</scene>
+        </group>
+        <group name="natural light">
+            <group name="rainbows">
+                <scene ev="15">clear sky background</scene>
+                <scene ev="14">cloudy sky background</scene>
+            </group>
+            <group name="sunsets and skylines">
+                <scene ev="12,14">just before sunset</scene>
+                <scene ev="12">at sunset</scene>
+                <scene ev="9,11">just after sunset</scene>
+            </group>
+            <group name="moonlight, altitude > 40°">
+                <scene ev="-3,-2">full</scene>
+                <scene ev="-4">gibbous</scene>
+                <scene ev="-5">crescent</scene>
+                <scene ev="-6">quarter</scene>
+            </group>
+            <group name="aurora borealis/australis">
+                <scene ev="-4,-3">bright</scene>
+                <scene ev="-6,-5">medium</scene>
+            </group>
+            <scene ev="11">subject in deep shade</scene>
+            <scene ev="9">landscapes</scene>
+            <scene ev="5">subject lit by bonfire or campfire</scene>
+            <scene ev="2">lighting</scene>
+            <scene ev="-6">subject under starlight only</scene>
+        </group>
+        <group name="artificial light">
+            <scene ev="9,10">neon and other bright signs</scene>
+            <scene ev="9">night sports</scene>
+            <scene ev="9">fires and burning buildings</scene>
+            <scene ev="7,8">night street scenes and window displays</scene>
+            <scene ev="5">night vehicle traffic</scene>
+            <scene ev="7">fairs and amusement parks</scene>
+            <scene ev="4,5">christmas tree lights</scene>
+            <scene ev="3,5">floodlit buildings, monuments, and fountains</scene>
+            <scene ev="3,5">distant views of lighted buildings</scene>
+            <scene ev="3">fireworks</scene>
+        </group>
+    </group>
+    <group name="indoor">
+        <scene ev="8,11">galleries</scene>
+        <scene ev="8,9">sports events, stage shows, and the like</scene>
+        <scene ev="8">interiors with bright florescent light</scene>
+        <scene ev="8">circuses, floodlit</scene>
+        <scene ev="9">ice shows, floodlit</scene>
+        <scene ev="7,8">offices and work areas</scene>
+        <scene ev="5,7">home interiors</scene>
+        <scene ev="4,5">christmas tree lights</scene>
+        <scene ev="4">candle light close-ups</scene>
+        <scene ev="-1,0">subject lit my dim ambient light</scene>
+    </group>
+    <group name="rare">
+        <scene ev="-99,-12">complete darkness</scene>
+        <scene ev="17,21">bright artificial lighting</scene>
+        <scene ev="22,99">exceptionally bright</scene>
+    </group>
+</scenes>
