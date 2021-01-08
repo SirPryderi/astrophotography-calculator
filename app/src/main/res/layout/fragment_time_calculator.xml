@@ -112,6 +112,8 @@
         android:layout_height="wrap_content" />
     </com.google.android.material.card.MaterialCardView>
 
-    <include layout="@layout/fragment_warning" />
+    <include layout="@layout/fragment_warning_underexposed" />
+    <include layout="@layout/fragment_warning_bad_exposure_time" />
+    <include layout="@layout/fragment_warning_overexposed" />
 
 </LinearLayout>

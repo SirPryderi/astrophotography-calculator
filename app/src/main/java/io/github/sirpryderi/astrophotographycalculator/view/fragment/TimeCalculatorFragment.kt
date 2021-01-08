@@ -13,6 +13,8 @@ import kotlin.math.roundToInt
 
 class TimeCalculatorFragment : AbstractCalculator() {
     private var exposureTimeWarning: View? = null
+    private var underexposedWarning: View? = null
+    private var overexposedWarning: View? = null
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +28,8 @@ class TimeCalculatorFragment : AbstractCalculator() {
         super.onViewCreated(view, savedInstanceState)
 
         exposureTimeWarning = view.findViewById(R.id.message_exposure_time_warning)
+        overexposedWarning = view.findViewById(R.id.message_overexposed_warning)
+        underexposedWarning = view.findViewById(R.id.message_underexposed_warning)
 
         val watcher = getOnChangeWatcher()
         cameraText?.addTextChangedListener(watcher)
@@ -53,11 +57,9 @@ class TimeCalculatorFragment : AbstractCalculator() {
         val ev = exposureValue(aperture, speed, iso)
         val evPercentage = evToPercentage(ev)
 
-        if (speed > camera.maxExposureTime400Rule(focalLength)) {
-            exposureTimeWarning?.visibility = View.VISIBLE
-        } else {
-            exposureTimeWarning?.visibility = View.INVISIBLE
-        }
+        exposureTimeWarning?.visibility = if (speed > camera.maxExposureTime400Rule(focalLength)) View.VISIBLE else View.INVISIBLE
+        underexposedWarning?.visibility = if (ev > -8) View.VISIBLE else View.INVISIBLE
+        overexposedWarning?.visibility = if (ev < -11) View.VISIBLE else View.INVISIBLE
 
         exposureValueProgress?.setIndicatorColor(progressBarColor(evPercentage))
 
