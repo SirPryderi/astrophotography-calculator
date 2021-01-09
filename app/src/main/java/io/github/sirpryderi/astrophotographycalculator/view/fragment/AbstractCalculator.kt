@@ -13,10 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import io.github.sirpryderi.astrophotographycalculator.R
-import io.github.sirpryderi.astrophotographycalculator.model.Camera
-import io.github.sirpryderi.astrophotographycalculator.model.find
-import io.github.sirpryderi.astrophotographycalculator.model.loadCameras
-import io.github.sirpryderi.astrophotographycalculator.model.toCameraNames
+import io.github.sirpryderi.astrophotographycalculator.model.*
 import io.github.sirpryderi.astrophotographycalculator.view.component.IsoSlider
 
 abstract class AbstractCalculator : Fragment() {
@@ -103,6 +100,14 @@ abstract class AbstractCalculator : Fragment() {
         override fun afterTextChanged(s: Editable?) = Unit
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = onChange()
+    }
+
+    protected fun setMessages(message: Message) {
+        messageListFragment?.adapter = MessageListRecyclerViewAdapter(listOf(message))
+    }
+
+    protected fun setMessages(messages: List<Message>) {
+        messageListFragment?.adapter = MessageListRecyclerViewAdapter(messages)
     }
 
     protected abstract fun calculate()

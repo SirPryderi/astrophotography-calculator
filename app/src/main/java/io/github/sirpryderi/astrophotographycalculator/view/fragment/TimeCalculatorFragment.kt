@@ -44,7 +44,15 @@ class TimeCalculatorFragment : AbstractCalculator() {
         val declinationInRad = (declinationInDeg / 180 * Math.PI).coerceIn(-Math.PI / 2.0, Math.PI / 2.0)
         val iso = isoSlider?.value?.toInt()
 
-        if (aperture == null || iso == null || focalLength == null || camera == null) return
+        if (camera == null) {
+            setMessages(Message(getString(R.string.error_camera_not_valid), R.drawable.ic_error_24))
+            return
+        }
+
+        if (aperture == null || iso == null || focalLength == null) {
+            setMessages(Message(getString(R.string.error_field_not_valid), R.drawable.ic_error_24))
+            return
+        }
 
         val speed = camera.maxExposureTime(aperture, focalLength)
         val ev = exposureValue(aperture, speed, iso)
@@ -61,7 +69,7 @@ class TimeCalculatorFragment : AbstractCalculator() {
                 messages.add(Message(getString(R.string.no_warning), R.drawable.ic_check_24))
         }
 
-        messageListFragment?.adapter = MessageListRecyclerViewAdapter(messages)
+        setMessages(messages)
 
         exposureValueProgress?.setIndicatorColor(progressBarColor(evPercentage))
 
