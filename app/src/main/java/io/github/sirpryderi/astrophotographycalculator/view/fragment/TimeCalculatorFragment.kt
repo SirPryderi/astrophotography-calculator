@@ -58,16 +58,14 @@ class TimeCalculatorFragment : AbstractCalculator() {
         val ev = exposureValue(aperture, speed, iso)
         val evPercentage = evToPercentage(ev)
 
-        when {
-            (speed > camera.maxExposureTime400Rule(focalLength)) ->
-                messages.add(Message(getString(R.string.warning_bad_exposure_time)))
-            (ev > -8) ->
-                messages.add(Message(getString(R.string.warning_underexposed)))
-            (ev < -11) ->
-                messages.add(Message(getString(R.string.warning_overexposed)))
-            else ->
-                messages.add(Message(getString(R.string.no_warning), R.drawable.ic_check_24))
-        }
+        if (speed > camera.maxExposureTime400Rule(focalLength))
+            messages.add(Message(getString(R.string.warning_bad_exposure_time)))
+        if (ev > -8)
+            messages.add(Message(getString(R.string.warning_underexposed)))
+        if (ev < -11)
+            messages.add(Message(getString(R.string.warning_overexposed)))
+        if (messages.isEmpty())
+            messages.add(Message(getString(R.string.no_warning), R.drawable.ic_check_24))
 
         setMessages(messages)
 
