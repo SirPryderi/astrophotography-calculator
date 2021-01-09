@@ -12,10 +12,6 @@ import kotlin.math.roundToInt
 
 
 class TimeCalculatorFragment : AbstractCalculator() {
-    private var exposureTimeWarning: View? = null
-    private var underexposedWarning: View? = null
-    private var overexposedWarning: View? = null
-
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -27,21 +23,19 @@ class TimeCalculatorFragment : AbstractCalculator() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        exposureTimeWarning = view.findViewById(R.id.message_exposure_time_warning)
-        overexposedWarning = view.findViewById(R.id.message_overexposed_warning)
-        underexposedWarning = view.findViewById(R.id.message_underexposed_warning)
-
         val watcher = getOnChangeWatcher()
         cameraText?.addTextChangedListener(watcher)
         apertureText?.addTextChangedListener(watcher)
         focalLengthText?.addTextChangedListener(watcher)
         declinationText?.addTextChangedListener(watcher)
-        isoSlider?.addOnChangeListener {_, _, _ -> onChange()}
+        isoSlider?.addOnChangeListener { _, _, _ -> onChange() }
 
         calculate()
     }
 
     override fun calculate() {
+        val messages = mutableListOf<Message>()
+
         val camera = getCamera()
 
         val aperture = apertureText?.text?.toString()?.toDoubleOrNull()
@@ -53,13 +47,21 @@ class TimeCalculatorFragment : AbstractCalculator() {
         if (aperture == null || iso == null || focalLength == null || camera == null) return
 
         val speed = camera.maxExposureTime(aperture, focalLength)
-
         val ev = exposureValue(aperture, speed, iso)
         val evPercentage = evToPercentage(ev)
 
-        exposureTimeWarning?.visibility = if (speed > camera.maxExposureTime400Rule(focalLength)) View.VISIBLE else View.INVISIBLE
-        underexposedWarning?.visibility = if (ev > -8) View.VISIBLE else View.INVISIBLE
-        overexposedWarning?.visibility = if (ev < -11) View.VISIBLE else View.INVISIBLE
+        when {
+            (speed > camera.maxExposureTime400Rule(focalLength)) ->
+                messages.add(Message(getString(R.string.warning_bad_exposure_time)))
+            (ev > -8) ->
+                messages.add(Message(getString(R.string.warning_underexposed)))
+            (ev < -11) ->
+                messages.add(Message(getString(R.string.warning_overexposed)))
+            else ->
+                messages.add(Message(getString(R.string.no_warning), R.drawable.ic_check_24))
+        }
+
+        messageListFragment?.adapter = MessageListRecyclerViewAdapter(messages)
 
         exposureValueProgress?.setIndicatorColor(progressBarColor(evPercentage))
 
@@ -73,10 +75,12 @@ class TimeCalculatorFragment : AbstractCalculator() {
         val max = -2.0
         val min = -14.0
 
-        if (ev < min) {return 1f}
-        if (ev > max) {return 0f}
+        when {
+            (ev < min) -> return 1f
+            (ev > max) -> return 0f
+        }
 
-        return (1.0 - abs(ev-min) / abs(max - min)).toFloat()
+        return (1.0 - abs(ev - min) / abs(max - min)).toFloat()
     }
 
     private fun progressBarColor(evPercentage: Float): Int {
@@ -87,7 +91,7 @@ class TimeCalculatorFragment : AbstractCalculator() {
             evPercentage > 0.5 -> {
                 finalColor = ArgbEvaluator().evaluate(evPercentage - 0.5f, primaryColor, 0xffffff) as Int
             }
-            evPercentage < 0.5  -> {
+            evPercentage < 0.5 -> {
                 finalColor = ArgbEvaluator().evaluate(0.5f - evPercentage, primaryColor, 0xff0000) as Int
             }
         }

@@ -10,6 +10,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.model.Camera
@@ -29,6 +30,8 @@ abstract class AbstractCalculator : Fragment() {
     protected var exposureValue: TextView? = null
     protected var isoText: TextView? = null
     protected var exposureValueProgress: LinearProgressIndicator? = null
+
+    protected var messageListFragment: RecyclerView? = null
 
     protected var cameras: ArrayList<Camera> = ArrayList()
 
@@ -55,6 +58,8 @@ abstract class AbstractCalculator : Fragment() {
         exposureValueProgress = view.findViewById(R.id.progress_exposure_value)
         isoSlider = view.findViewById(R.id.slider_iso)
         isoText = view.findViewById(R.id.textview_iso)
+
+        messageListFragment = view.findViewById(R.id.id_message_list)
 
         cameraText?.setAdapter(adapter)
 

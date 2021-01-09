@@ -112,8 +112,11 @@
         android:layout_height="wrap_content" />
     </com.google.android.material.card.MaterialCardView>
 
-    <include layout="@layout/fragment_warning_underexposed" />
-    <include layout="@layout/fragment_warning_bad_exposure_time" />
-    <include layout="@layout/fragment_warning_overexposed" />
+    <fragment
+        android:id="@+id/id_message_list"
+        android:name="io.github.sirpryderi.astrophotographycalculator.view.fragment.MessageListFragment"
+        tools:layout="@layout/fragment_message_list"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
 
 </LinearLayout>

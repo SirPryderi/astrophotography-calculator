@@ -20,7 +20,9 @@
     <string name="warning_bad_exposure_time">This exposure time is likely to still show star trails. Try using a shorter lens or increasing the aperture.</string>
     <string name="warning_underexposed">The EV is too high, this will result in underexposed images. Aim for -8 EV when shooting astrophotography. Try using a shorter focal length, a wider aperture, or increasing the ISO.</string>
     <string name="warning_overexposed">The EV is too low, this will result in overexposed images. Aim for -8 EV when shooting astrophotography. Try using a longer focal length, a narrower aperture, or decreasing the ISO.</string>
+    <string name="no_warning">All good! No problem was detected with the current settings.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Coming soon!</string>
+    
 </resources>
