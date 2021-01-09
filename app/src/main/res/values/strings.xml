@@ -13,6 +13,7 @@
     <string name="max_exposure_time">Max Shutter Speed</string>
     <string name="exposure_time">Shutter Speed</string>
     <string name="declination">Minimum Star Declination</string>
+    <string name="star_trails">Star Trails</string>
 
     <string name="title_time_calculator">Time Calculator</string>
     <string name="title_ev_calculator">Exposure Value Calculator</string>
@@ -26,4 +27,10 @@
     <string name="no_warning">All good! No problem was detected with the current settings.</string>
     <string name="error_camera_not_valid">The camera model is not valid.</string>
     <string name="error_field_not_valid">One of the fields is invalid or empty!</string>
+
+    <string name="star_trails_0">None</string>
+    <string name="star_trails_1">Minimal</string>
+    <string name="star_trails_2">Some</string>
+    <string name="star_trails_3">Noticeable</string>
+    <string name="star_trails_4">Clearly visible</string>
 </resources>

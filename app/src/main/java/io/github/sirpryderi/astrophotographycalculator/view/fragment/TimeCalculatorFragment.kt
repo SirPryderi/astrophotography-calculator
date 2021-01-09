@@ -28,6 +28,7 @@ class TimeCalculatorFragment : AbstractCalculator() {
         apertureText?.addTextChangedListener(watcher)
         focalLengthText?.addTextChangedListener(watcher)
         declinationText?.addTextChangedListener(watcher)
+        starTrailsText?.addTextChangedListener(watcher)
         isoSlider?.addOnChangeListener { _, _, _ -> onChange() }
 
         calculate()
@@ -43,18 +44,19 @@ class TimeCalculatorFragment : AbstractCalculator() {
         val declinationInDeg = declinationText?.text?.toString()?.toDoubleOrNull() ?: 0.0
         val declinationInRad = (declinationInDeg / 180 * Math.PI).coerceIn(-Math.PI / 2.0, Math.PI / 2.0)
         val iso = isoSlider?.value?.toInt()
+        val k = kValue()
 
         if (camera == null) {
             setMessages(Message(getString(R.string.error_camera_not_valid), R.drawable.ic_error_24))
             return
         }
 
-        if (aperture == null || iso == null || focalLength == null) {
+        if (aperture == null || iso == null || focalLength == null || k == null) {
             setMessages(Message(getString(R.string.error_field_not_valid), R.drawable.ic_error_24))
             return
         }
 
-        val speed = camera.maxExposureTime(aperture, focalLength)
+        val speed = camera.maxExposureTime(aperture, focalLength, k, declination = declinationInRad)
         val ev = exposureValue(aperture, speed, iso)
         val evPercentage = evToPercentage(ev)
 
@@ -74,7 +76,7 @@ class TimeCalculatorFragment : AbstractCalculator() {
         isoText?.text = getString(R.string.iso, Iso(iso).value)
         exposureValue?.text = getString(R.string.exposure_value_f, ev)
         exposureValueProgress?.progress = (evPercentage * 100).roundToInt()
-        exposureTimeText?.setText("%.2f".format(camera.maxExposureTime(aperture, focalLength, declination = declinationInRad)))
+        exposureTimeText?.setText("%.2f".format(speed))
     }
 
     private fun evToPercentage(ev: Double): Float {

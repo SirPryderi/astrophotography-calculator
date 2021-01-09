@@ -39,7 +39,7 @@ class Camera(val brand: String,
     }
 
     // https://sahavre.fr/wp/regle-npf-rule/
-    fun maxExposureTime(aperture: Double, focalLength: Double, accuracy: Int = 1, declination: Double = 0.0): Double {
+    fun maxExposureTime(aperture: Double, focalLength: Double, accuracy: Float = 1.0f, declination: Double = 0.0): Double {
         return accuracy *
                (16.856 * aperture + 0.0997 * focalLength + 13.713 * pixelPitch()) /
                (focalLength * cos(declination))

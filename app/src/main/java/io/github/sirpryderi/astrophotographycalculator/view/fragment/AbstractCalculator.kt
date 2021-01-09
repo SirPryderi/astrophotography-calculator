@@ -22,6 +22,7 @@ abstract class AbstractCalculator : Fragment() {
     protected var focalLengthText: EditText? = null
     protected var exposureTimeText: EditText? = null
     protected var declinationText: EditText? = null
+    protected var starTrailsText: AutoCompleteTextView? = null
 
     protected var isoSlider: IsoSlider? = null
     protected var exposureValue: TextView? = null
@@ -43,13 +44,15 @@ abstract class AbstractCalculator : Fragment() {
 
         cameras = loadCameras(requireContext())
 
-        val adapter = ArrayAdapter(requireContext(), R.layout.camera_menu_item, cameras.toCameraNames())
+        val cameraAdapter = ArrayAdapter(requireContext(), R.layout.camera_menu_item, cameras.toCameraNames())
+        val starTrailsAdapter = ArrayAdapter(requireContext(), R.layout.camera_menu_item, trailsText().keys.toTypedArray())
 
         cameraText = view.findViewById(R.id.textview_camera)
         apertureText = view.findViewById(R.id.textview_aperture)
         focalLengthText = view.findViewById(R.id.textview_focal_length)
         exposureTimeText = view.findViewById(R.id.textview_exposure_time)
         declinationText = view.findViewById(R.id.textview_declination)
+        starTrailsText = view.findViewById(R.id.textview_star_trails)
 
         exposureValue = view.findViewById(R.id.textview_exposure_value)
         exposureValueProgress = view.findViewById(R.id.progress_exposure_value)
@@ -58,7 +61,8 @@ abstract class AbstractCalculator : Fragment() {
 
         messageListFragment = view.findViewById(R.id.id_message_list)
 
-        cameraText?.setAdapter(adapter)
+        cameraText?.setAdapter(cameraAdapter)
+        starTrailsText?.setAdapter(starTrailsAdapter)
 
         // populates the field with the last used values (or default ones)
         getPreviousValues()
@@ -68,6 +72,7 @@ abstract class AbstractCalculator : Fragment() {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
         cameraText?.setText(sharedPref.getString("previous_camera", getString(R.string.default_camera)), false)
+        starTrailsText?.setText(sharedPref.getString("previous_star_trails", getString(R.string.star_trails_0)), false)
         apertureText?.setText(sharedPref.getString("previous_aperture", getString(R.string.default_aperture)))
         focalLengthText?.setText(sharedPref.getString("previous_focal_length", getString(R.string.default_focal_length)))
         declinationText?.setText(sharedPref.getString("previous_declination", getString(R.string.default_declination)))
@@ -83,6 +88,7 @@ abstract class AbstractCalculator : Fragment() {
             if (focalLengthText != null) putString("previous_focal_length", focalLengthText?.text.toString())
             if (declinationText != null) putString("previous_declination", declinationText?.text.toString())
             if (exposureTimeText != null) putString("previous_exposure_time", exposureTimeText?.text.toString())
+            if (starTrailsText != null) putString("previous_star_trails", starTrailsText?.text.toString())
             apply()
         }
     }
@@ -108,6 +114,20 @@ abstract class AbstractCalculator : Fragment() {
 
     protected fun setMessages(messages: List<Message>) {
         messageListFragment?.adapter = MessageListRecyclerViewAdapter(messages)
+    }
+
+    private fun trailsText(): Map<String, Float> {
+        return mapOf(getString(R.string.star_trails_0) to 1.0f,
+                getString(R.string.star_trails_1) to 1.5f,
+                getString(R.string.star_trails_2) to 2.0f,
+                getString(R.string.star_trails_3) to 2.5f,
+                getString(R.string.star_trails_4) to 3.0f)
+    }
+
+    protected fun kValue(): Float? {
+        if (starTrailsText == null) return null
+        val strValue = starTrailsText?.text.toString()
+        return trailsText()[strValue]
     }
 
     protected abstract fun calculate()

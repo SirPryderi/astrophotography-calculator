@@ -75,6 +75,23 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        app:startIconDrawable="@drawable/ic_startrails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/textview_star_trails"
+        android:hint="@string/star_trails">
+
+        <AutoCompleteTextView
+            android:id="@+id/textview_star_trails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="@string/star_trails_0"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         app:startIconDrawable="@drawable/ic_shutter_speed_24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
