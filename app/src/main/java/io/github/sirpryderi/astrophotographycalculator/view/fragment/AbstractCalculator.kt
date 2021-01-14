@@ -9,9 +9,11 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.google.android.material.textfield.TextInputLayout
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.model.*
 import io.github.sirpryderi.astrophotographycalculator.view.component.IsoSlider
@@ -28,6 +30,9 @@ abstract class AbstractCalculator : Fragment() {
     protected var exposureValue: TextView? = null
     protected var isoText: TextView? = null
     protected var exposureValueProgress: LinearProgressIndicator? = null
+
+    private var shutterSpeedLayout: TextInputLayout? = null
+    private var isShutterSpeedFraction = false
 
     protected var messageListFragment: RecyclerView? = null
 
@@ -59,6 +64,13 @@ abstract class AbstractCalculator : Fragment() {
         isoSlider = view.findViewById(R.id.slider_iso)
         isoText = view.findViewById(R.id.textview_iso)
 
+        shutterSpeedLayout = view.findViewById(R.id.text_layout_shutter_speed)
+
+        shutterSpeedLayout?.setEndIconOnClickListener {
+            isShutterSpeedFraction = !isShutterSpeedFraction
+            onShutterSpeedFraction()
+        }
+
         messageListFragment = view.findViewById(R.id.id_message_list)
 
         cameraText?.setAdapter(cameraAdapter)
@@ -66,6 +78,14 @@ abstract class AbstractCalculator : Fragment() {
 
         // populates the field with the last used values (or default ones)
         getPreviousValues()
+        onShutterSpeedFraction()
+    }
+
+    private fun onShutterSpeedFraction() {
+        val drawable = if (isShutterSpeedFraction) R.drawable.ic_not_fraction else R.drawable.ic_fraction
+        shutterSpeedLayout?.prefixText = if (isShutterSpeedFraction) "1/" else null
+        shutterSpeedLayout?.endIconDrawable = ResourcesCompat.getDrawable(resources, drawable, requireContext().theme)
+        onChange()
     }
 
     private fun getPreviousValues() {
@@ -77,6 +97,7 @@ abstract class AbstractCalculator : Fragment() {
         focalLengthText?.setText(sharedPref.getString("previous_focal_length", getString(R.string.default_focal_length)))
         declinationText?.setText(sharedPref.getString("previous_declination", getString(R.string.default_declination)))
         exposureTimeText?.setText(sharedPref.getString("previous_exposure_time", getString(R.string.default_exposure_time)))
+        isShutterSpeedFraction = sharedPref.getBoolean("previous_is_shutter_speed_fraction", false)
     }
 
     private fun setPreviousValues() {
@@ -89,6 +110,9 @@ abstract class AbstractCalculator : Fragment() {
             if (declinationText != null) putString("previous_declination", declinationText?.text.toString())
             if (exposureTimeText != null) putString("previous_exposure_time", exposureTimeText?.text.toString())
             if (starTrailsText != null) putString("previous_star_trails", starTrailsText?.text.toString())
+
+            val value = if (shutterSpeedLayout?.endIconDrawable != null) isShutterSpeedFraction else false
+            putBoolean("previous_is_shutter_speed_fraction", value)
             apply()
         }
     }
@@ -128,6 +152,12 @@ abstract class AbstractCalculator : Fragment() {
         if (starTrailsText == null) return null
         val strValue = starTrailsText?.text.toString()
         return trailsText()[strValue]
+    }
+
+    protected fun shutterSpeed(): Double? {
+        if (exposureTimeText == null) return null
+        val value = exposureTimeText?.text?.toString()?.toDoubleOrNull() ?: return null
+        return if (isShutterSpeedFraction) 1 / value else value
     }
 
     protected abstract fun calculate()

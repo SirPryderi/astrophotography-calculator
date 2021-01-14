@@ -30,7 +30,7 @@ class EVCalculatorFragment : AbstractCalculator() {
 
     override fun calculate() {
         val aperture = apertureText?.text?.toString()?.toDoubleOrNull()
-        val speed = exposureTimeText?.text?.toString()?.toDoubleOrNull()
+        val speed = shutterSpeed()
         val iso = isoSlider?.value?.toInt()
 
         if (aperture == null || iso == null || speed == null) return
