@@ -47,12 +47,12 @@ class TimeCalculatorFragment : AbstractCalculator() {
         val k = kValue()
 
         if (camera == null) {
-            setMessages(Message(getString(R.string.error_camera_not_valid), R.drawable.ic_error_24))
+            setMessages(Message(getText(R.string.error_camera_not_valid), R.drawable.ic_error_24))
             return
         }
 
         if (aperture == null || iso == null || focalLength == null || k == null) {
-            setMessages(Message(getString(R.string.error_field_not_valid), R.drawable.ic_error_24))
+            setMessages(Message(getText(R.string.error_field_not_valid), R.drawable.ic_error_24))
             return
         }
 
@@ -61,13 +61,13 @@ class TimeCalculatorFragment : AbstractCalculator() {
         val evPercentage = evToPercentage(ev)
 
         if (speed > camera.maxExposureTime400Rule(focalLength))
-            messages.add(Message(getString(R.string.warning_bad_exposure_time)))
+            messages.add(Message(getText(R.string.warning_bad_exposure_time)))
         if (ev > -8)
-            messages.add(Message(getString(R.string.warning_underexposed)))
+            messages.add(Message(getText(R.string.warning_underexposed)))
         if (ev < -11)
-            messages.add(Message(getString(R.string.warning_overexposed)))
+            messages.add(Message(getText(R.string.warning_overexposed)))
         if (messages.isEmpty())
-            messages.add(Message(getString(R.string.no_warning), R.drawable.ic_check_24))
+            messages.add(Message(getText(R.string.no_warning), R.drawable.ic_check_24))
 
         setMessages(messages)
 
