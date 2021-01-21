@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.view.helper.getStateColour
+import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 
@@ -17,6 +18,8 @@ class LightMeter(context: Context, attrs: AttributeSet) : android.view.View(cont
     private var mWidth = width
     private var mHeight = height
     private val minHeight = 210
+
+    private val stopFormatting = DecimalFormat("+#;-#")
 
     var targetEv = -9f
         set(value) {
@@ -35,7 +38,7 @@ class LightMeter(context: Context, attrs: AttributeSet) : android.view.View(cont
         textPaint.color = getStateColour(R.color.material_on_surface_emphasis_medium)
         textPaint.style = Paint.Style.FILL_AND_STROKE
         textPaint.textAlign = Paint.Align.CENTER
-        textPaint.textSize = 40f
+        textPaint.textSize = 35f
 
         strokePaint.color = getStateColour(R.color.colorPrimary)
         strokePaint.strokeWidth = strokeWidth
@@ -61,12 +64,12 @@ class LightMeter(context: Context, attrs: AttributeSet) : android.view.View(cont
         val unit = (1f / stops) * ((barWidth) / 2f) // distance between 1 stop
         val deltaEv = (targetEv - ev).coerceIn(-stops.toFloat() - 1, stops.toFloat() + 1)
 
-        var label = ""
+        var label: CharSequence
 
         // stop marks
         for (stop in -stops..stops) {
             val stopX = x + stop * unit
-            label = stop.toString()
+            label = if (stop == 0) "0" else stopFormatting.format(stop)
             canvas?.drawText(label, 0, label.length, stopX, y - tickHeight - labelOffset, textPaint)
             canvas?.drawLine(stopX, y, stopX, y - tickHeight, strokePaint)
 

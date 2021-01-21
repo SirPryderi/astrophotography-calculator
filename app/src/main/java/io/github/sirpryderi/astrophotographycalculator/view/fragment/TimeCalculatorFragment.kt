@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.model.*
+import java.text.DecimalFormat
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -76,7 +77,7 @@ class TimeCalculatorFragment : AbstractCalculator() {
         isoText?.text = getString(R.string.iso, Iso(iso).value)
         exposureValue?.text = getString(R.string.exposure_value_f, ev)
         exposureValueProgress?.progress = (evPercentage * 100).roundToInt()
-        exposureTimeText?.setText("%.2f".format(speed))
+        exposureTimeText?.setText(DecimalFormat("#.00").format(speed))
         lightMeter?.ev = ev.toFloat()
     }
 
