@@ -77,6 +77,7 @@ class TimeCalculatorFragment : AbstractCalculator() {
         exposureValue?.text = getString(R.string.exposure_value_f, ev)
         exposureValueProgress?.progress = (evPercentage * 100).roundToInt()
         exposureTimeText?.setText("%.2f".format(speed))
+        lightMeter?.ev = ev.toFloat()
     }
 
     private fun evToPercentage(ev: Double): Float {

@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputLayout
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.model.*
 import io.github.sirpryderi.astrophotographycalculator.view.component.IsoSlider
+import io.github.sirpryderi.astrophotographycalculator.view.component.LightMeter
 
 abstract class AbstractCalculator : Fragment() {
     protected var cameraText: AutoCompleteTextView? = null
@@ -27,6 +28,7 @@ abstract class AbstractCalculator : Fragment() {
     protected var starTrailsText: AutoCompleteTextView? = null
 
     protected var isoSlider: IsoSlider? = null
+    protected var lightMeter: LightMeter? = null
     protected var exposureValue: TextView? = null
     protected var isoText: TextView? = null
     protected var exposureValueProgress: LinearProgressIndicator? = null
@@ -62,6 +64,7 @@ abstract class AbstractCalculator : Fragment() {
         exposureValue = view.findViewById(R.id.textview_exposure_value)
         exposureValueProgress = view.findViewById(R.id.progress_exposure_value)
         isoSlider = view.findViewById(R.id.slider_iso)
+        lightMeter = view.findViewById(R.id.light_meter)
         isoText = view.findViewById(R.id.textview_iso)
 
         shutterSpeedLayout = view.findViewById(R.id.text_layout_shutter_speed)
