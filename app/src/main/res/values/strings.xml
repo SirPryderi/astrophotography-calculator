@@ -22,8 +22,8 @@
     <string name="good_for">Good for</string>
 
     <string name="warning_bad_exposure_time">This exposure time is likely to still show star trails. Try using a shorter lens or increasing the aperture.</string>
-    <string name="warning_underexposed">The EV is too high, this will result in underexposed images. Aim for -8 EV when shooting astrophotography. Try using a shorter focal length, a wider aperture, or increasing the ISO.</string>
-    <string name="warning_overexposed">The EV is too low, this will result in overexposed images. Aim for -8 EV when shooting astrophotography. Try using a longer focal length, a narrower aperture, or decreasing the ISO.</string>
+    <string name="warning_underexposed"><b>Too dark!</b> The image will be underexposed. Aim for at least -1 in the app light meter. Try using a shorter focal length, a wider aperture, or increasing the ISO.</string>
+    <string name="warning_overexposed"><b>Too bright!</b> The image will overexposed. Aim for a maximum of +1 in the app light meter. Try using a longer focal length, a narrower aperture, or decreasing the ISO.</string>
     <string name="no_warning">All good! No problem was detected with the current settings.</string>
     <string name="error_camera_not_valid">The camera model is not valid.</string>
     <string name="error_field_not_valid">One of the fields is invalid or empty!</string>
