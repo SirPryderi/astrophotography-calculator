@@ -120,6 +120,7 @@
             android:id="@+id/light_meter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            tools:layout_height="70dp"
             />
     </com.google.android.material.card.MaterialCardView>
 
