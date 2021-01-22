@@ -4,7 +4,7 @@ Simple and intuitive app to calculate the ideal exposure time while shooting ast
 Stars are not fixed in the sky (rather they appear not to because of Earth's rotation), so exposing for too long will start showing motion blur. Calculating the correct exposure time on the field can be tricky, and many approximation rules (e.g.: 400 rule) are often way off from the actual value. This app just solves all of that!
 
 ## I'm not convinced, how does it work?
-It uses the [NPF rule](https://sahavre.fr/wp/regle-npf-rule/) developed by Frédéric Michaud, using information about the camera sensor and the type of lense you're using to minimize the visible star trails. This mathematical model is extremely more reliable than the 400/500 rule. This apps makes it a lot easier to apply it on the field.
+It uses the [NPF rule](https://sahavre.fr/wp/regle-npf-rule/) developed by Frédéric Michaud, using information about the camera sensor and the type of lens you're using to minimize the visible star trails. This mathematical model is extremely more reliable than the 400/500 rule. This apps makes it a lot easier to apply it on the field.
 
 ## Some screenshots to prove it's not full of ads?
 
