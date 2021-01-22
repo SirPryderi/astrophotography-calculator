@@ -11,9 +11,9 @@ It uses the [NPF rule](https://sahavre.fr/wp/regle-npf-rule/) developed by Fréd
 Here you go:
 
 <span>
-  <img src="assets/screens/1.png" alt="screenshot" width="250"/>
-  <img src="assets/screens/2.png" alt="screenshot" width="250"/>
-  <img src="assets/screens/3.png" alt="screenshot" width="250"/>
+  <img src="assets/SCREENS/1.png" alt="screenshot" width="250"/>
+  <img src="assets/SCREENS/2.png" alt="screenshot" width="250"/>
+  <img src="assets/SCREENS/3.png" alt="screenshot" width="250"/>
 </span>
 
 ## Fine, where can I get it?
