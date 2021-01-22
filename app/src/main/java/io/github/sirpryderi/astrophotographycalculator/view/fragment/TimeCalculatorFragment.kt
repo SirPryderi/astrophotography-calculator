@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.model.*
+import io.github.sirpryderi.astrophotographycalculator.view.helper.getStateColour
 import java.text.DecimalFormat
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -94,7 +95,7 @@ class TimeCalculatorFragment : AbstractCalculator() {
     }
 
     private fun progressBarColor(evPercentage: Float): Int {
-        val primaryColor = this.requireContext().resources.getColor(R.color.colorPrimary)
+        val primaryColor = requireView().getStateColour(R.color.colorPrimary)
         var finalColor = primaryColor
 
         when {
