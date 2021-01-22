@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.view.helper.getStateColour
+import io.github.sirpryderi.astrophotographycalculator.view.helper.preferences
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
@@ -18,6 +19,17 @@ class LightMeter(context: Context, attrs: AttributeSet) : android.view.View(cont
     private var mWidth = width
     private var mHeight = height
     private val minHeight = 210
+
+    // preferences
+    private val pref = preferences()
+    private val stops = pref.getInt("light_meter_steps", 4)
+    private val subStops = pref.getInt("light_meter_sub_steps", 2)
+    private val showNumbers = pref.getBoolean("light_meter_show_numbers", true)
+    private val indicatorStops = 9
+    private val tickHeight = 30
+    private val padding = 100
+    private val indicatorOffset = 10
+    private val labelOffset = 15
 
     private val stopFormatting = DecimalFormat("+#;-#")
 
@@ -47,15 +59,6 @@ class LightMeter(context: Context, attrs: AttributeSet) : android.view.View(cont
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        // config
-        val stops = 4
-        val subStops = 2
-        val indicatorStops = 9
-        val tickHeight = 30
-        val padding = 100
-        val indicatorOffset = 10
-        val labelOffset = 15
-
         // utility variables
         val x = mWidth / 2.0f
         val y = mHeight / 2.0f + 15f
@@ -69,8 +72,10 @@ class LightMeter(context: Context, attrs: AttributeSet) : android.view.View(cont
         // stop marks
         for (stop in -stops..stops) {
             val stopX = x + stop * unit
-            label = if (stop == 0) "0" else stopFormatting.format(stop)
-            canvas?.drawText(label, 0, label.length, stopX, y - tickHeight - labelOffset, textPaint)
+            if (showNumbers) {
+                label = if (stop == 0) "0" else stopFormatting.format(stop)
+                canvas?.drawText(label, 0, label.length, stopX, y - tickHeight - labelOffset, textPaint)
+            }
             canvas?.drawLine(stopX, y, stopX, y - tickHeight, strokePaint)
 
             // no sub stops after the last stop

@@ -20,8 +20,7 @@
     <fragment
         android:id="@+id/navigation_settings"
         android:name="io.github.sirpryderi.astrophotographycalculator.view.fragment.SettingsFragment"
-        android:label="@string/title_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:label="@string/title_settings" />
 
     <fragment
         android:id="@+id/navigation_help"

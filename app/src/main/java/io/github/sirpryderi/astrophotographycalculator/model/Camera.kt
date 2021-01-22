@@ -7,23 +7,25 @@ import kotlin.math.sqrt
 
 class Camera(val brand: String,
              val model: String,
-             val maximumPdr: Double?,
+             val maximumPdr: Double?, // photographic dynamic range
              val lowLightIso: Int?,
              val lowLightEv: Double?,
              val readNoiseIso: Int?,
-             val sensorWidth: Double,
-             val sensorHeight: Double,
-             val pixelWidth: Int,
-             val pixelHeight: Int,
+             val sensorWidth: Double, // mm
+             val sensorHeight: Double, // px
+             val pixelWidth: Int, // mm
+             val pixelHeight: Int, // mm
 ) {
     fun megaPixels(): Double {
-        return pixelHeight * pixelWidth / 1_000.0
+        return pixelHeight * pixelWidth / 1_000_000.0
     }
 
+    // in µm
     fun pixelPitch(): Double {
         return sensorWidth / pixelWidth * 1_000.0
     }
 
+    // in mm
     fun circleOfConfusion(): Double {
         return sensorWidth / pixelWidth * 2
     }

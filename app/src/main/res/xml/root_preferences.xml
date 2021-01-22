@@ -1,0 +1,48 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:iconSpaceReserved="false">
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/settings_general">
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:iconSpaceReserved="false"
+            app:key="information_show_additional_info"
+            app:title="@string/information_show_additional_info_title"
+            app:summary="@string/information_show_additional_info_summary"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/setting_light_meter">
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:iconSpaceReserved="false"
+            app:key="light_meter_show_numbers"
+            app:title="@string/light_meter_show_numbers_title" />
+
+        <SeekBarPreference
+            android:max="10"
+            app:defaultValue="4"
+            app:iconSpaceReserved="false"
+            app:key="light_meter_steps"
+            app:min="1"
+            app:seekBarIncrement="1"
+            app:showSeekBarValue="true"
+            app:summary="@string/light_meter_steps_summary"
+            app:title="@string/light_meter_steps_title" />
+
+        <SeekBarPreference
+            android:max="10"
+            app:defaultValue="2"
+            app:iconSpaceReserved="false"
+            app:key="light_meter_sub_steps"
+            app:min="0"
+            app:seekBarIncrement="1"
+            app:showSeekBarValue="true"
+            app:summary="@string/light_meter_sub_steps_summary"
+            app:title="@string/light_meter_sub_steps_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

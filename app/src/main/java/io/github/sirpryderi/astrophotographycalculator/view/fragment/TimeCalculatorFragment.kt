@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import io.github.sirpryderi.astrophotographycalculator.R
 import io.github.sirpryderi.astrophotographycalculator.model.*
 import io.github.sirpryderi.astrophotographycalculator.view.helper.getStateColour
+import io.github.sirpryderi.astrophotographycalculator.view.helper.preferences
 import java.text.DecimalFormat
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
 
 class TimeCalculatorFragment : AbstractCalculator() {
+    var showAdditionalInfo = false
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -24,6 +27,8 @@ class TimeCalculatorFragment : AbstractCalculator() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        showAdditionalInfo = preferences().getBoolean("information_show_additional_info", showAdditionalInfo)
 
         val watcher = getOnChangeWatcher()
         cameraText?.addTextChangedListener(watcher)
@@ -70,6 +75,10 @@ class TimeCalculatorFragment : AbstractCalculator() {
             messages.add(Message(getText(R.string.warning_overexposed)))
         if (messages.isEmpty())
             messages.add(Message(getText(R.string.no_warning), R.drawable.ic_check_24))
+
+        if (showAdditionalInfo) {
+            messages.add(additionalInfoMessage(context, camera, ev))
+        }
 
         setMessages(messages)
 

@@ -14,13 +14,15 @@
     <string name="exposure_time">Shutter Speed</string>
     <string name="declination">Minimum Star Declination</string>
     <string name="star_trails">Star Trails</string>
+    <string name="good_for">Good for</string>
 
+    <!-- Tabs Titles -->
     <string name="title_time_calculator">Time Calculator</string>
     <string name="title_ev_calculator">Exposure Value Calculator</string>
     <string name="title_help">Help</string>
     <string name="title_settings">Settings</string>
-    <string name="good_for">Good for</string>
 
+    <!-- Messages -->
     <string name="warning_bad_exposure_time">This exposure time is likely to still show star trails. Try using a shorter lens or increasing the aperture.</string>
     <string name="warning_underexposed"><b>Too dark!</b>\nThe image will be underexposed. Aim for at least -1 in the app light meter. Try using a shorter focal length, a wider aperture, or increasing the ISO.</string>
     <string name="warning_overexposed"><b>Too bright!</b>\nThe image will overexposed. Aim for a maximum of +1 in the app light meter. Try using a longer focal length, a narrower aperture, or decreasing the ISO.</string>
@@ -28,9 +30,21 @@
     <string name="error_camera_not_valid">The camera model is not valid.</string>
     <string name="error_field_not_valid">One of the fields is invalid or empty!</string>
 
+    <!-- Star Trails Values -->
     <string name="star_trails_0">None</string>
     <string name="star_trails_1">Minimal</string>
     <string name="star_trails_2">Some</string>
     <string name="star_trails_3">Noticeable</string>
     <string name="star_trails_4">Clearly visible</string>
+
+    <!-- Preferences -->
+    <string name="settings_general">General</string>
+    <string name="information_show_additional_info_title">Show additional information</string>
+    <string name="information_show_additional_info_summary">Display information for advanced users</string>
+    <string name="setting_light_meter">Light meter</string>
+    <string name="light_meter_show_numbers_title">Show numbers</string>
+    <string name="light_meter_steps_summary">How many stops to show in the light meter</string>
+    <string name="light_meter_steps_title">Light meter stops</string>
+    <string name="light_meter_sub_steps_summary">How many marks to show between 1-stop interval</string>
+    <string name="light_meter_sub_steps_title">Light meter sub stops</string>
 </resources>
